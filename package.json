@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "cross-env NODE_ENV=test istanbul cover _mocha -R spec test/*"
+    "test": "yarn run lint && _mocha -R spec test/*",
+    "lint": "eslint src test --color",
+    "istanbul": "cross-env NODE_ENV=test istanbul cover mocha -R spec test/*"
   },
   "keywords": [
     "GA",
     "Garagem",
-    "Garage"
+    "Garage",
+    "atlantico",
+    "Atlantico"
   ],
   "author": "Joao Pereira",
   "license": "Apache-2.0",

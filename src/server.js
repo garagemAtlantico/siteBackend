@@ -1,9 +1,18 @@
 var express = require('express')
 
 var app = express()
+var cors = require('cors');
+var bodyParser = require('body-parser');
 
-app.get('/notes', function(req, res) {
-	  res.json({notes: "This is your notebook. Edit this to start saving your notes!"})
-	})
+const PORT = 3000;
 
-app.listen(3000)
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+	extended: true
+}));
+
+require('./routes')(app);
+app.listen(PORT);
+
+module.exports = app;
