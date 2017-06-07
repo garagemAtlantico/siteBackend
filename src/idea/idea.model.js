@@ -6,6 +6,7 @@ class IdeaModel {
   }
   static add(idea) {
     allIdeas.push(idea);
+    return idea;
   }
   static removeAll() {
     allIdeas = [];

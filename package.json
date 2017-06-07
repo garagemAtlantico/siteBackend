@@ -1,13 +1,13 @@
 {
   "name": "garagem-atlantico-backend",
   "version": "1.0.0",
-  "description": "Backend for garagem atlantico\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C\u001b[A\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[G",
+  "description": "Backend for garagem atlantico",
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "yarn run lint && _mocha -R spec test/*",
+    "test": "lint && yarn run _mocha -R spec test/*",
     "lint": "eslint src test --color",
-    "istanbul": "cross-env NODE_ENV=test istanbul cover mocha -R spec test/*"
+    "istanbul": "cross-env NODE_ENV=test _istanbul cover _mocha -R spec test/*"
   },
   "keywords": [
     "GA",

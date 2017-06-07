@@ -6,6 +6,5 @@ exports.allIdeas = function (req, res) {
 }
 
 exports.addIdea = (req, res) => {
-  IdeaModel.add(req.body);
-  res.send({result: 'Idea added'});  
+  res.send(IdeaModel.add(req.body));
 }
