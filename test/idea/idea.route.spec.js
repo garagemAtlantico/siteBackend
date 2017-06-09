@@ -7,16 +7,17 @@ let server = require(`${process.cwd()}/src/server`);
 let request = function () {
   return chai.request(server);
 }
-var IdeaModel = require(`${process.cwd()}/src/idea/idea.model`);
+var IdeaModel = require(`${process.cwd()}/src/idea/idea.model`)();
 
 describe('(Router) Idea', () => {
   describe('when there are 2 ideas', () => {
     beforeEach(() => {
-      IdeaModel.add({});
-      IdeaModel.add({});
+      IdeaModel.create({});
+      IdeaModel.create({});
     });
+
     afterEach(() => {
-      IdeaModel.removeAll();
+      IdeaModel.destroy({ truncate: true });
     });
 
     describe('when trying to retrieve them', () => {

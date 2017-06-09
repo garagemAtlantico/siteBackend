@@ -1,10 +1,14 @@
 
-let IdeaModel = require('./idea.model');
+let IdeaModel = require('./idea.model')();
 
 exports.allIdeas = function (req, res) {
-  res.send(IdeaModel.findAll());
+  IdeaModel.findAll().then((ideas) => {
+    res.send(ideas);
+  });
 }
 
 exports.addIdea = (req, res) => {
-  res.send(IdeaModel.add(req.body));
+  IdeaModel.create(req.body).then((idea) => {
+    res.send(idea);
+  });
 }
