@@ -4,10 +4,15 @@
   "description": "Backend for garagem atlantico",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server.js",
-    "test": "yarn run lint && yarn run _mocha -R spec test/*",
+    "start": "yarn migrate:dev && node src/server.js",
+    "start:prod": "yarn migrate:prod && node src/server.js",
+    "test": "cross-env NODE_ENV=test yarn run lint && yarn migrate:test && cross-env NODE_ENV=test yarn run _mocha -R spec test/*",
     "lint": "eslint src test --color",
-    "istanbul": "cross-env NODE_ENV=test _istanbul cover _mocha -R spec test/*"
+    "istanbul": "cross-env NODE_ENV=test _istanbul cover _mocha -R spec test/*",
+    "migrate": "yarn sequelize db:migrate",
+    "migrate:dev": "cross-env NODE_ENV=dev yarn migrate",
+    "migrate:test": "cross-env NODE_ENV=test yarn migrate",
+    "migrate:prod": "cross-env NODE_ENV=production yarn migrate"
   },
   "keywords": [
     "GA",
@@ -26,7 +31,8 @@
     "express": "^4.15.3",
     "pg": "^6.2.3",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.0.0"
+    "sequelize": "^4.0.0",
+    "sequelize-cli": "^3.0.0-3"
   },
   "devDependencies": {
     "chai": "^4.0.1",
